@@ -8,8 +8,8 @@ export const Header = () => {
   console.log(session?.user);
 
   return (
-    <div className="text-primary-content> navbar bg-primary">
-      <div className="flex px-3 text-3xl font-bold">{`${session?.user.firstName}'s Notes`}</div>
+    <div className="navbar bg-primary text-primary-content">
+      <div className="flex-1 px-3 text-3xl font-bold">{`${session?.user.firstName}'s Notes`}</div>
       <div className="flex-none gap-2">
         <div className="dropdown-end dropdown">
           {session.user ? (
