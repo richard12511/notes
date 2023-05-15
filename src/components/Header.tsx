@@ -1,4 +1,4 @@
-import { useSession, SignInButton } from "@clerk/nextjs";
+import { useSession, SignInButton, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 
 export const Header = () => {
@@ -9,24 +9,11 @@ export const Header = () => {
 
   return (
     <div className="text-primary-content> navbar bg-primary">
-      <div className="flex pl-5 text-3xl font-bold">{`${session?.user.firstName}'s Notes`}</div>
-      <div className="">
+      <div className="flex px-3 text-3xl font-bold">{`${session?.user.firstName}'s Notes`}</div>
+      <div className="flex-none gap-2">
         <div className="dropdown-end dropdown">
           {session.user ? (
-            <label
-              tabIndex={0}
-              className="btn-ghost btn-circle avatar btn"
-              onClick={() => console.log("sign out")}
-            >
-              <div className="w-10 rounded-full">
-                <Image
-                  src={session.user.profileImageUrl ?? ""}
-                  alt={session.user.fullName ?? ""}
-                  height={14}
-                  width={14}
-                />
-              </div>
-            </label>
+            <UserButton />
           ) : (
             <SignInButton mode="modal">
               <button className="btn-ghost rounded-btn btn">Sign in</button>
