@@ -6,14 +6,18 @@ import { Header } from "~/components/Header";
 import { api } from "~/utils/api";
 
 const Home: NextPage = () => {
-  const { data } = api.topic.getAll.useQuery();
+  const { data: topics } = api.topic.getAll.useQuery();
 
   return (
     <>
-      <main>
+      <main className="flex h-screen flex-col">
         <Header />
-        <div className="flex h-screen w-full">
-          <span>OH HAI!</span>
+        <div className="overflow-none grid h-full max-h-screen w-full grid-cols-10 gap-3 p-3">
+          <div className="col-span-2 flex h-full flex-col border border-rose-500">
+            <div className="flex-1">Topics</div>
+            <div className="flex-none">Add Topic</div>
+          </div>
+          <div className="col-span-8 border border-slate-600">Notes List</div>
         </div>
       </main>
     </>

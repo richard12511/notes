@@ -5,7 +5,6 @@ export const Header = () => {
   const { isLoaded, session } = useSession();
   if (!isLoaded) return null;
   if (!session) return null;
-  console.log(session?.user);
 
   return (
     <div className="navbar bg-primary text-primary-content">
