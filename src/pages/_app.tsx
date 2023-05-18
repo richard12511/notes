@@ -4,8 +4,14 @@ import type { AppProps } from "next/app";
 import "~/styles/globals.css";
 import Head from "next/head";
 import { ClerkProvider } from "@clerk/nextjs";
+import { useEffect } from "react";
 
 const MyApp: AppType = ({ Component, pageProps }: AppProps) => {
+  useEffect(() => {
+    // @ts-ignore
+    import("preline");
+  }, []);
+
   return (
     <ClerkProvider {...pageProps}>
       <Head>
