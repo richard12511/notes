@@ -1,4 +1,4 @@
-import { useUser } from "@clerk/nextjs";
+import { UserButton, useUser } from "@clerk/nextjs";
 import { type NextPage } from "next";
 import { useEffect } from "react";
 import { Header } from "~/components/Header";
@@ -6,6 +6,15 @@ import { Header } from "~/components/Header";
 import { api } from "~/utils/api";
 
 const Home: NextPage = () => {
+  const { user, isLoaded, isSignedIn } = useUser();
+  if (!isSignedIn)
+    return (
+      <main className="flex h-screen flex-col">
+        {" "}
+        <UserButton afterSignOutUrl="/" />
+      </main>
+    );
+
   const { data: topics } = api.topic.getAll.useQuery();
 
   return (
