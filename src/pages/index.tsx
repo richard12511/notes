@@ -26,10 +26,6 @@ const Home: NextPage = () => {
       void refetchTopics();
     },
   });
-  const handleAddTopic = () => {
-    console.log("adding topic");
-    createTopic.mutate({ title: newTopic });
-  };
 
   return (
     <>
@@ -52,6 +48,12 @@ const Home: NextPage = () => {
                   placeholder="Add a topic"
                   value={newTopic}
                   onChange={(e) => setNewTopic(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      void createTopic.mutate({ title: newTopic });
+                      setNewTopic("");
+                    }
+                  }}
                 />
                 <PrimaryOutlineButton
                   text="Add Topic"
